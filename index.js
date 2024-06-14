@@ -1,41 +1,39 @@
 /**
- * CHALLENGE 1-1 TASK
+ * CHALLENGE 1-2 SOLUTION
  *
- * Rewrite code below using let, const and var according to
- * variables usage guidelines
+ * Find all menu elements by selector ".nav-link"
+ * or by className "nav-link".
+ *
+ *  Use "for" loop to iterate through all menu items
+ * Inside of the loop add "onclick" event handler to
+ * each menu item.
+ *
+ * In the "onclick" event handler:
+ * 1. Remove first "active" class from all
+ * menu elements
+ * 2. Add "active" class to the clicked menu element
+ * 3. Log to the console message with the name
+ * of the clicked menu item
  */
-"use strict";
-const numbers1 = [23, 87, 110, 11, 20, 5, 34];
-const numbers2 = [11, 21, 31];
 
-const onlyOddNumbers = function(arr) {
-  var  oddNumbers = [];
-  var EVEN_NUMBERS_QUANTITY = 0;
-  const LEN = arr.length;
 
-  for (let i = 0; i < LEN; i++) {
-    arr[i] % 2
-      ? oddNumbers.push(arr[i])
-      : EVEN_NUMBERS_QUANTITY++;
+const navBarItems = document.querySelectorAll(".nav-link");
+const LEN = navBarItems.length;
+
+console.log(navBarItems);
+
+for(let i=0;i<LEN;i++){
+  const currentItem=navBarItems[i];
+
+  currentItem.onclick=function(){
+    
+    for(let j=0;j<LEN;j++){
+      navBarItems[j].classList.remove("active");
+    }
+
+    navBarItems[i].classList.add("active");
+
+  
   }
 
-  if (EVEN_NUMBERS_QUANTITY === 0) {
-    let info = "Array contains only odd numbers";
-    console.log(info);
-  } else {
-    let info =
-      "There are " +
-      EVEN_NUMBERS_QUANTITY +
-      " even numbers";
-    console.log(info);
-  }
-
-  return {
-    oddNumbersKey: oddNumbers,
-    EVEN_NUMBERS_QUANTITYValue: EVEN_NUMBERS_QUANTITY
-  };
-
-};
-
-console.log(onlyOddNumbers(numbers1));
-console.log(onlyOddNumbers(numbers2));
+}
