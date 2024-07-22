@@ -3,23 +3,37 @@
 var person1={
     name:"Conde Abdourahamane",
     age: 26,
-    present: ()=>{
-        return "This is "+this.name + " , He is " + this.age
-    } //This here is always global or window
+    present: function()
+    {
+        setTimeout(function()
+        {
+            console.log("This is "+this.name + " , He is " + this.age) 
+        }.bind(this), //We need bind here because we don't use arrow function
+        2000)
+    } 
 }
 
 var person2={
     name:"Conde Abdourahamane",
     age: 26,
     present: function(){
-        return "This is "+this.name + " , He is " + this.age
-    } 
+        setTimeout(()=>{
+            console.log("This is "+this.name + " , He is " + this.age) 
+        },2000) // Here, there is no need to bind thanks to arrow function whose this is the surronding context : person2
+    }
 }
 
-var anotherPerson={
+var anotherPerson1={
     name: "Conde Souleymane",
     age: 15,
 }
 
-console.log(person1.present.call(anotherPerson)) //This is undefined , He is undefined
-console.log(person2.present.call(anotherPerson)) //This is Conde Souleymane , He is 15
+var anotherPerson2={
+    name: "Conde Karifa",
+    age: 15,
+}
+
+console.log(person1.present.call(anotherPerson1)) //This is undefined , He is undefined
+console.log(person2.present.call(anotherPerson2)) //This is Conde Souleymane , He is 15
+
+
