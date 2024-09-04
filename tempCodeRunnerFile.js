@@ -1,2 +1,1 @@
-var type= typeof []
-console.log(type)
+    if(array.some(element=>typeof(element)!="number")){
