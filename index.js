@@ -4,6 +4,22 @@ const b= [10, 4, 9, 15, 100]
 const c= [150,120,110,80]
 const d= [1,2,5,100,1000]
 const e= [1,2,5,3,1000]
+const arrayOfObjects=[
+    {name: "Abdourahamane Condé",
+     age: 26,
+     Nationality: "Guinean"
+    },
+    {name: "Souleymane Condé",
+        age: 14,
+        Nationality: "Guinean"
+    },
+    {name: "Drissa Diarrassouba",
+        age: 26,
+        Nationality: "Ivoirian"
+    }
+]
+
+const arrayOfArrays=[a,aBis,b,c,d,e]
 
 const isSortedInAscending= (array)=>{
     const length=array.length
@@ -62,12 +78,21 @@ const arrayCheckerNew= (array)=>{
 
 }
 
-const areArraysEqual= (array1, array2)=>{
-    return array1.length!=array2.length &&array1.every((element,index)=>element==array2[index])
+const areArraysOfPrimitiveTypesInstancesEqual= (array1, array2)=>{
+    return array1.length!=array2.length && array1.every((element,index)=>element==array2[index])
 
+}
+const doesArrayInclude= (array, searchElement)=>{
+    if(typeof(searchElement)!=="object"){
+        return array.Includes(searchElement)
+    }
+    else{
+        return array.map(JSON.stringify).includes(JSON.stringify(searchElement))
+    }
 }
 
 // console.log(arrayChecker(a))
 // console.log(arrayCheckerNew(c))
 
-console.log(areArraysEqual(a,aBis))
+// console.log(areArraysOfPrimitiveTypesInstancesEqual(a,aBis))
+console.log(doesArrayInclude(arrayOfArrays,aBis))
